@@ -113,7 +113,7 @@ define(['managerAPI',
                 {
                     type: 'injectStyle',
                     css: [
-                        '* {color:red}',
+                        '* {color:black}',
                         '[piq-page] {background-color: #fff; border: 1px solid transparent; border-radius: 4px; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); margin-bottom: 20px; border-color: #bce8f1;}',
                         '[piq-page] > ol {margin: 15px;}',
                         '[piq-page] > .btn-group {margin: 0px 15px 15px 15px;}',
