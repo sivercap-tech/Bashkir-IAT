@@ -11,11 +11,9 @@ define(['pipAPI','./iat10_ru.js'], function(APIConstructor, iatExtension){
                     height: 4
                 },
                 stimulusMedia : [
-                    { word: 'Башкортостан' },
                     { word: 'Сабантуй' },
                     { word: 'Бешбармак' },
                     { word: 'Урал-Батыр' },
-                    { word: 'Уфа' },
                     { word: 'Агидель' },
                     { word: 'Бешмет' },
                     { word: 'Курай' }
@@ -32,12 +30,10 @@ define(['pipAPI','./iat10_ru.js'], function(APIConstructor, iatExtension){
                     height: 4
                 },
                 stimulusMedia : [
-                    { word: 'Россия' },
                     { word: 'Масленица' },
                     { word: 'Пельмени' },
                     { word: 'Илья Муромец' },
-                    { word: 'Москва' },
-                    { word: 'Енисей' },
+                    { word: 'Волга' },
                     { word: 'Кокошник' },
                     { word: 'Балалайка' }
                 ],
