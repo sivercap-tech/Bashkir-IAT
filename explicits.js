@@ -64,7 +64,7 @@ define(['questAPI'], function(Quest){
     API.addQuestionsSet('natChoiceOpen',{
         inherit : 'basicOpen',
         name: 'nat_primary_choice',
-        stem: 'Если бы завтра проводилась перепись населения и можно было выбрать только одну национальность, какую бы вы указали?'
+        stem: 'Если бы завтра проводилась перепись населения и можно было выбрать только одну национальность, какую бы Вы указали?'
     });
 
 	API.addQuestionsSet('ethnicMain',{
