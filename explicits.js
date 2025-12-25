@@ -70,7 +70,7 @@ define(['questAPI'], function(Quest){
 	API.addQuestionsSet('ethnicMain',{
 		inherit : 'basicSelect',
 		name: 'ethnic_main',
-		stem: 'К какой национальности Вы относите себя в первую очередь?',
+		stem: 'Есть ли национальность, к которой Вы себя относите, в этом списке? Если нет, выберите вариант "В этом списке нет национальности, к которой я себя отношу"',
 		answers: [
 			{text:'Русские',   value:1},
         	{text:'Башкиры',   value:2},
@@ -82,7 +82,7 @@ define(['questAPI'], function(Quest){
         	{text:'Мордва',    value:8},
         	{text:'Белорусы',  value:9},
         	{text:'Армяне',    value:10},
-        	{text:'Другое',    value:11}
+        	{text:'В этом списке нет национальности, к которой я себя отношу',    value:11}
     	]
 	});
 
