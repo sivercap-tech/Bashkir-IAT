@@ -11,7 +11,7 @@ define(['questAPI'], function(Quest){
         decline: false,
         declineText: isTouch ? 'Decline' : 'Отказ от ответа',
         autoFocus:true,
-        progressBar: 'Страница <%= pagesMeta.number из 1%>'
+        progressBar: 'По желанию можете оставить обратную связь, которой мы будем очень благодарны!'
     });
 
     /**
