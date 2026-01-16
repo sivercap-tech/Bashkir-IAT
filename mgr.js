@@ -11,7 +11,7 @@ define(['managerAPI',
         respondentId: respondentId
     });
 
-	init_data_pipe(API, 'gwZKTRm7QDHI',  {file_type:'csv'});	
+	// init_data_pipe(API, 'gwZKTRm7QDHI',  {file_type:'csv'});	
 
     API.setName('mgr');
     API.addSettings('skip',true);
@@ -44,7 +44,78 @@ define(['managerAPI',
             'Волга', 'Кокошник', 'Балалайка', 'Изба', 'Квас', 'Шапка-ушанка'
         ])
     });
+// --- НАЧАЛО БЛОКА ОТПРАВКИ В ЯНДЕКС ---
 
+    const YANDEX_FUNCTION_URL = "https://functions.yandexcloud.net/d4ekhluuh9cjf4on17pa";
+    function logsToCSV(logs) {
+        if (!logs || !logs.length) return "";
+        var headers = new Set();
+        var flattenedLogs = logs.map(function(log) {
+            var flat = {};
+            flat.type = log.type;
+            flat.name = log.name;
+            flat.latency = log.latency;
+            flat.timestamp = log.timestamp;
+            
+            if (log.data && typeof log.data === 'object') {
+                for (var key in log.data) {
+                    flat[key] = log.data[key];
+                }
+            }
+            Object.keys(flat).forEach(function(k) { headers.add(k); });
+            return flat;
+        });
+
+        var headersArr = Array.from(headers);
+        var csv = headersArr.join(",") + "\n"; // Заголовки
+
+        csv += flattenedLogs.map(function(row) {
+            return headersArr.map(function(header) {
+                var val = row[header];
+                if (val === null || val === undefined) return "";
+                var str = String(val);
+                if (str.includes(",") || str.includes("\"") || str.includes("\n")) {
+                    return '"' + str.replace(/"/g, '""') + '"';
+                }
+                return str;
+            }).join(",");
+        }).join("\n");
+
+        return csv;
+    }
+
+    function sendToYandex(input, context) {
+        // Получаем все логи текущей сессии
+        var allLogs = window.minnoJS.logger.getLogs(); 
+        var csvData = logsToCSV(allLogs);
+        
+        var globalData = API.getGlobal();
+        var respondentId = globalData.respondentId || 'unknown';
+        var fileName = 'iat_data_' + respondentId + '.csv';
+
+        return fetch(YANDEX_FUNCTION_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                fileName: fileName,
+                fileData: csvData
+            })
+        })
+        .then(function(response) {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(function(data) {
+            console.log('Data saved successfully:', data);
+        })
+        .catch(function(error) {
+            console.error('Error saving data:', error);
+        });
+    }
     API.addTasksSet({
         instructions: [{
             type: 'message',
