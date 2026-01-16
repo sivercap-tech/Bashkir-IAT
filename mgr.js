@@ -11,7 +11,7 @@ define(['managerAPI',
         respondentId: respondentId
     });
 
-	init_data_pipe(API, 'BAIOjsKArEWS',  {file_type:'csv'});	
+	init_data_pipe(API, 'gwZKTRm7QDHI',  {file_type:'csv'});	
 
     API.setName('mgr');
     API.addSettings('skip',true);
@@ -106,7 +106,7 @@ define(['managerAPI',
     API.addSequence([
         { type: 'isTouch' }, // Определение тач-устройства
         
-        { type: 'post', path: ['$isTouch', 'raceSet', 'blackLabels', 'whiteLabels'] },
+        { type: 'post', path: ['$isTouch', 'raceSet', 'blackLabels', 'whiteLabels' 'respondentId'] },
 
         {
             mixer:'branch',
