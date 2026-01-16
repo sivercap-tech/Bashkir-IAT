@@ -43,9 +43,7 @@ define(['managerAPI',
         ])
     });
 
-    // --- НАЧАЛО БЛОКА ОТПРАВКИ В ЯНДЕКС ---
-    // ВАЖНО: Убедитесь, что эта ссылка ведет на вашу актуальную функцию
-    const YANDEX_FUNCTION_URL = "https://functions.yandexcloud.net/d4ekhluuh9cjf4on17pa";
+    const YANDEX_FUNCTION_URL = "https://functions.yandexcloud.net/d4espo7p69sufh4b8af5";
     
     function logsToCSV(logs) {
         if (!logs || !logs.length) return "";
