@@ -170,8 +170,11 @@ define(['managerAPI',
             url: 'https://anketolog.ru/rs/993764/kI8Z0LUH' + respondentId 
         }],
 		
-        uploading: uploading_task({header: 'just a moment', body:'Please wait, sending data... '})
-    });
+uploading: [{
+            type: 'call',
+            func: sendToYandex,
+            isAsync: true // Важно: ждем завершения отправки перед переходом дальше
+        }]    });
 
     // 3. ПОСЛЕДОВАТЕЛЬНОСТЬ ЗАДАНИЙ
     API.addSequence([
